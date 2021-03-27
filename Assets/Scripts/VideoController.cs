@@ -11,6 +11,7 @@ public class VideoController : MonoBehaviour
 
     public VideoController() {
     }
+    
     void Start()
     {
         VideoPlayer = GetComponent<VideoPlayer>();
@@ -19,6 +20,6 @@ public class VideoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(VideoPlayer.time);
+
     }
 }

@@ -8,12 +8,14 @@ public class BeatController : MonoBehaviour
 {
     protected GameObject BakaMitaiVid;
     
-    private Dictionary<double, GameObject> beatMap;
+    private Dictionary<double, GameObject> BeatMap;
 
     private double lastTime;
 
     public string TextMe;
     
+
+    // FIXME use a single prefab class and pass params (key-letter, injections)
     public GameObject KeyPrefabI;
     public GameObject KeyPrefabJ;
     public GameObject KeyPrefabK;
@@ -23,14 +25,22 @@ public class BeatController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        beatMap =  new Dictionary<double, GameObject>();
+        BeatMap =  BuildBeatMap();
+        
+        // TODO evaluate Find Vs FindWithTag
+        BakaMitaiVid = GameObject.FindWithTag("SongVid");
+    }
+
+    private Dictionary<double, GameObject> BuildBeatMap() {
+        // TODO re-evaluate. Is dictionary the best choice for this?  
+        var beatMap = new Dictionary<double, GameObject>();
         beatMap.Add(1.2d, KeyPrefabK);
         beatMap.Add(2.6d, KeyPrefabI);
         beatMap.Add(7.6d, KeyPrefabI);
         beatMap.Add(9d, KeyPrefabJ);
         beatMap.Add(11d, KeyPrefabK);
-        
-        BakaMitaiVid = GameObject.FindWithTag("SongVid");
+
+        return beatMap;
     }
 
     // Update is called once per frame
@@ -38,10 +48,10 @@ public class BeatController : MonoBehaviour
     {
         var time = BakaMitaiVid.GetComponent<VideoPlayer>().time;
         
-        if(beatMap.ContainsKey(time) && time > lastTime) {
+        if(BeatMap.ContainsKey(time) && time > lastTime) {
             lastTime =  time;
             
-            GameObject thisKey = Instantiate(beatMap[time], new Vector3(100, 0, 0), Quaternion.identity);
+            GameObject thisKey = Instantiate(BeatMap[time], new Vector3(100, 0, 0), Quaternion.identity);
 
             thisKey.transform.SetParent (GameObject.Find("BeatCanvas").transform, false);
         }

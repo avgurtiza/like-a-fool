@@ -9,12 +9,14 @@ public class KeyMotionController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // FIXME get X-pos param from a public property
         transform.position = new Vector3 (10, transform.position.y, transform.position.z);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Remove object if it went out-of-frame
         if(transform.position.x < -10f) {
             Destroy(gameObject);
         }

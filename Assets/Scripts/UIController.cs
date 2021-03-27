@@ -1,4 +1,6 @@
-﻿using System;
+﻿// DEPRACTED moved to BeatController
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +8,7 @@ using UnityEngine.Video;
 
 public class UIController : MonoBehaviour
 {
+    /*
     protected GameObject BakaMitaiVid;
     
     private Dictionary<double, string> beatMap;
@@ -45,5 +48,6 @@ public class UIController : MonoBehaviour
 
         }
     }
-    
+    */
+
 }
