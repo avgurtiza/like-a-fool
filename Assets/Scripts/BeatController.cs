@@ -23,9 +23,8 @@ public class BeatController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("INSIDE BEATMAP CONTROLLER");   
-
         beatMap =  new Dictionary<double, GameObject>();
+        beatMap.Add(1.2d, KeyPrefabK);
         beatMap.Add(2.6d, KeyPrefabI);
         beatMap.Add(7.6d, KeyPrefabI);
         beatMap.Add(9d, KeyPrefabJ);
@@ -41,7 +40,8 @@ public class BeatController : MonoBehaviour
         
         if(beatMap.ContainsKey(time) && time > lastTime) {
             lastTime =  time;
-            GameObject thisKey = Instantiate(beatMap[time], new Vector3(357, 0, 0), Quaternion.identity);
+            
+            GameObject thisKey = Instantiate(beatMap[time], new Vector3(100, 0, 0), Quaternion.identity);
 
             thisKey.transform.SetParent (GameObject.Find("BeatCanvas").transform, false);
         }

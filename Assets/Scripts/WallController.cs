@@ -2,24 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyMotionController : MonoBehaviour
+public class WallController : MonoBehaviour
 {
-    private float keySpeed = 5f;
-    
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3 (10, transform.position.y, transform.position.z);
+        Debug.Log("Wall created!");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x < -10f) {
-            Destroy(gameObject);
-        }
-
-        transform.position = new Vector3 (transform.position.x - (Time.deltaTime * keySpeed), transform.position.y, transform.position.z);
+        
     }
 
     void OnCollisionEnter(Collision collisionInfo)
