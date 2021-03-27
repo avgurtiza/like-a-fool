@@ -1,9 +1,17 @@
-﻿using System.Collections;
+﻿/**
+ * Class KeyMotionController
+ * @author Slide Gurtiza <slide.gurtiza@gmail.com>
+ * @package Prefab
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class KeyMotionController : MonoBehaviour
 {
+    // TODO add public key character param and set the button text to that
+
     private float keySpeed = 5f;
     
     // Start is called before the first frame update
@@ -21,20 +29,24 @@ public class KeyMotionController : MonoBehaviour
             Destroy(gameObject);
         }
 
+        // TODO remove if key miss
+
         transform.position = new Vector3 (transform.position.x - (Time.deltaTime * keySpeed), transform.position.y, transform.position.z);
     }
 
-    void OnCollisionEnter(Collision collisionInfo)
+
+
+    void OnCollisionEnter2D(Collision collisionInfo)
     {
         Debug.Log("Detected collision between " + gameObject.name + " and " + collisionInfo.collider.name);
     }
  
-    void OnCollisionStay(Collision collisionInfo)
+    void OnCollisionStay2D(Collision collisionInfo)
     {
         Debug.Log(gameObject.name + " and " + collisionInfo.collider.name + " are still colliding");
     }
     
-    void OnCollisionExit(Collision collisionInfo)
+    void OnCollisionExit2D(Collision collisionInfo)
     {
         Debug.Log(gameObject.name + " and " + collisionInfo.collider.name + " are no longer colliding");
     }

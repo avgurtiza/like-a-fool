@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/**
+ * Class WallController
+ * @author Slide Gurtiza <slide.gurtiza@gmail.com>
+ * @package Karaoke\BeatCanvas
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,17 +22,18 @@ public class WallController : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collisionInfo)
+    // FIXME This does not work.  At all.
+    void OnCollisionEnter2D(Collision collisionInfo)
     {
         Debug.Log("Detected collision between " + gameObject.name + " and " + collisionInfo.collider.name);
     }
  
-    void OnCollisionStay(Collision collisionInfo)
+    void OnCollisionStay2D(Collision collisionInfo)
     {
         Debug.Log(gameObject.name + " and " + collisionInfo.collider.name + " are still colliding");
     }
     
-    void OnCollisionExit(Collision collisionInfo)
+    void OnCollisionExit2D(Collision collisionInfo)
     {
         Debug.Log(gameObject.name + " and " + collisionInfo.collider.name + " are no longer colliding");
     }
