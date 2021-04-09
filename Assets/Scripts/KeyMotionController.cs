@@ -32,12 +32,8 @@ public class KeyMotionController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // TODO remove if key miss
+        // TODO remove on key-miss
 
         transform.position = new Vector3 (transform.position.x - (Time.deltaTime * keySpeed), transform.position.y, transform.position.z);
     }
-
-
-
-    
 }

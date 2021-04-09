@@ -1,4 +1,5 @@
-﻿/**
+﻿using System.Net.Mime;
+/**
  * Class BeatController
  * @author Slide Gurtiza <slide.gurtiza@gmail.com>
  * @package Karaoke\BeatCanvas
@@ -9,36 +10,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class BeatController : MonoBehaviour
 {
     protected GameObject BakaMitaiVid;
+
+    protected GameObject BeatCanvas;
     
+    private KaraokeControls karaokeControls;
+
     private Dictionary<double, GameObject> BeatMap;
 
     private double lastTime;
 
-    public string TextMe;
+    public string currentBeat;
     
+    private bool debouncing = false;
 
-    // FIXME use a single prefab class and pass params (key-letter, injections)
+    private string lastBeatPress;
+
+    // TODO use a single prefab class and pass params (key-letter, injections)
     public GameObject KeyPrefabI;
     public GameObject KeyPrefabJ;
     public GameObject KeyPrefabK;
     public GameObject KeyPrefabL;
 
+    private int score = 0;
 
-    // Start is called before the first frame update
+    public GameObject ScoreDisplay;
+
+    private void Awake() {
+        karaokeControls = new KaraokeControls();
+    }
+
+    private void OnEnable() {
+        karaokeControls.Enable();
+    }
+    
+    private void OnDisable() {
+        karaokeControls.Disable();
+    }
+
     void Start()
     {
         BeatMap =  BuildBeatMap();
         
         // TODO evaluate Find Vs FindWithTag
         BakaMitaiVid = GameObject.FindWithTag("SongVid");
+        BeatCanvas = GameObject.Find("BeatCanvas");
+        ScoreDisplay = GameObject.Find("ScoreDisplay");
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         var time = BakaMitaiVid.GetComponent<VideoPlayer>().time;
@@ -46,11 +70,46 @@ public class BeatController : MonoBehaviour
         if(BeatMap.ContainsKey(time) && time > lastTime) {
             lastTime =  time;
 
-            // FIXME Find a way to instantiate into a target canvas without having to transform
-            // FIXME move x-pos param to a public property
+            // TODO Find a way to instantiate into a target canvas without having to transform
+            // TODO move x-pos param to a public property
             var thisBeat = BeatMap[time];
             GameObject thisKey = Instantiate(thisBeat, new Vector3(100, thisBeat.transform.position.y, 0), Quaternion.identity);
-            thisKey.transform.SetParent(GameObject.Find("BeatCanvas").transform, false);
+            thisKey.transform.SetParent(BeatCanvas.transform, false);
+        }
+
+        ScoreDisplay.GetComponent<Text>().text = score.ToString();
+
+        if(currentBeat == null) {
+            debouncing = false;
+        }
+    }
+
+    // TODO I'm sure unity has it's own debouncing helpers
+    public void OnTriangle(InputValue input) {
+        if(currentBeat == "I" && !debouncing) {
+            score++;
+            debouncing = true;
+        }
+    }
+
+    public void OnSquare(InputValue input) {
+        if(currentBeat == "J" && !debouncing) {
+            score++;
+            debouncing = true;
+        }
+    }
+
+    public void OnCross(InputValue input) {
+        if(currentBeat == "K" && !debouncing) {
+            score++;
+            debouncing = true;
+        }
+    }
+
+    public void OnCircle(InputValue input) {
+        if(currentBeat == "L" && !debouncing) {
+            score++;
+            debouncing = true;
         }
     }
 
