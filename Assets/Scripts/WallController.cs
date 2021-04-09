@@ -10,10 +10,12 @@ using UnityEngine;
 
 public class WallController : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Wall created!");
+        // KeyCollision = GetComponent<C>();
     }
 
     // Update is called once per frame
@@ -22,19 +24,21 @@ public class WallController : MonoBehaviour
         
     }
 
-    // FIXME This does not work.  At all.
-    void OnCollisionEnter2D(Collision collisionInfo)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Detected collision between " + gameObject.name + " and " + collisionInfo.collider.name);
-    }
- 
-    void OnCollisionStay2D(Collision collisionInfo)
+        // Debug.Log("Collision enter" + gameObject.name);
+        // Debug.Log("Detected collision between " + gameObject.name);
+        Debug.Log(collision.name);
+    } 
+    private void OnTriggerStay2D( )
     {
-        Debug.Log(gameObject.name + " and " + collisionInfo.collider.name + " are still colliding");
+        // Debug.Log(gameObject.name + " and " + KeyCollider.name + " are still colliding");
     }
     
-    void OnCollisionExit2D(Collision collisionInfo)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log(gameObject.name + " and " + collisionInfo.collider.name + " are no longer colliding");
+        // Debug.Log("Collision exit"+ gameObject.name);
+        Debug.Log(collision.name);
+        // Debug.Log(gameObject.name + " and " + KeyCollider.name + " are no longer colliding");
     }
 }

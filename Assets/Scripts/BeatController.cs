@@ -48,7 +48,8 @@ public class BeatController : MonoBehaviour
 
             // FIXME Find a way to instantiate into a target canvas without having to transform
             // FIXME move x-pos param to a public property
-            GameObject thisKey = Instantiate(BeatMap[time], new Vector3(100, 0, 0), Quaternion.identity);
+            var thisBeat = BeatMap[time];
+            GameObject thisKey = Instantiate(thisBeat, new Vector3(100, thisBeat.transform.position.y, 0), Quaternion.identity);
             thisKey.transform.SetParent(GameObject.Find("BeatCanvas").transform, false);
         }
     }

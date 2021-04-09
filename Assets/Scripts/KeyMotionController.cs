@@ -14,11 +14,14 @@ public class KeyMotionController : MonoBehaviour
 
     private float keySpeed = 5f;
     
+    private Collider KeyCollider;
+
     // Start is called before the first frame update
     void Start()
     {
         // FIXME get X-pos param from a public property
         transform.position = new Vector3 (10, transform.position.y, transform.position.z);
+
     }
 
     // Update is called once per frame
@@ -36,18 +39,5 @@ public class KeyMotionController : MonoBehaviour
 
 
 
-    void OnCollisionEnter2D(Collision collisionInfo)
-    {
-        Debug.Log("Detected collision between " + gameObject.name + " and " + collisionInfo.collider.name);
-    }
- 
-    void OnCollisionStay2D(Collision collisionInfo)
-    {
-        Debug.Log(gameObject.name + " and " + collisionInfo.collider.name + " are still colliding");
-    }
     
-    void OnCollisionExit2D(Collision collisionInfo)
-    {
-        Debug.Log(gameObject.name + " and " + collisionInfo.collider.name + " are no longer colliding");
-    }
 }
