@@ -1,0 +1,90 @@
+{
+    "name": "PlayerControls",
+    "maps": [
+        {
+            "name": "Karaoke",
+            "id": "f52398a7-0548-4bf2-98fe-e4d1dd464ce5",
+            "actions": [
+                {
+                    "name": "Triangle",
+                    "type": "PassThrough",
+                    "id": "e36cd811-7ace-4d88-97e5-43978156eb0e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Square",
+                    "type": "Button",
+                    "id": "8af9391b-3fdf-4dc5-bf68-6e3346fa63e2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Cross",
+                    "type": "Button",
+                    "id": "51b53003-5b6b-4e7d-9bb9-b06f46236f50",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Circle",
+                    "type": "Button",
+                    "id": "74a5b7a3-28c2-4c6a-b47f-3d4450f7d043",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8d42a159-d69d-46a0-8529-b68335b0dc3f",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Triangle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3632764b-11ff-4b69-86a2-f170dd427ba3",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Square",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "237fdcf2-91a2-43f8-a5fc-42b93302336b",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cross",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d0007375-bd4f-43bf-a3b5-27741d0fded5",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Circle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
